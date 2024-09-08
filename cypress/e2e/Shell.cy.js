@@ -9,7 +9,7 @@ describe('Shell Recharge Website', () => {
     cy.get('.css-1txziwr.enmru2y4').should('be.visible');
 
     // Step 3: Click the international dropdown
-    cy.get('.css-1txziwr.enmru2y4').click({ force: true });
+    cy.get('.css-1txziwr.enmru2y4').click();
     cy.wait(5000);
     cy.get('#cookiebanner-accept-all > span').click();
 
