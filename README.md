@@ -1,5 +1,4 @@
 # Shellproject
-# Shellproject
 
 # Project Overview
 
