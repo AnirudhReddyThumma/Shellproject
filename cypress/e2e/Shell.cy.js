@@ -8,17 +8,10 @@ describe('Shell Recharge Website', () => {
     // Assertion: Verify the website loaded by checking the presence of the international dropdown
     cy.get('.css-1txziwr.enmru2y4').should('be.visible');
 
-    // Step 2: Handle any cookie banners
-    cy.get('body').then(($body) => {
-      if ($body.find('.cookiebanner__text button').length > 0) {
-        // Assertion: Verify the cookie banner is visible
-        cy.get('.cookiebanner__text button').should('be.visible');
-        cy.get('.cookiebanner__text button:contains("Accept")').click({ force: true });
-      }
-    });
-
     // Step 3: Click the international dropdown
     cy.get('.css-1txziwr.enmru2y4').click({ force: true });
+    cy.wait(5000);
+    cy.get('#cookiebanner-accept-all > span').click();
 
     // Assertion: Verify the dropdown list is visible
     cy.get('.css-1txziwr.enmru2y4').should('be.visible');
@@ -30,6 +23,7 @@ describe('Shell Recharge Website', () => {
 
     // Step 5: Click on a link or button that causes redirection
     cy.get('.hamburger').click(); // Example of clicking a hamburger menu button
+    
 
     // Find the My Account link and ensure it's set to open in a new tab
     cy.get('a[href*="account.shellrecharge.com"]').should('have.attr', 'target', '_blank').then(($el) => {
